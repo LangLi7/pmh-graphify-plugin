@@ -1,83 +1,90 @@
+---
+description: "Graphify plugin for the DeepSeek Harness: an interactive code graph in three levels, node search, a code viewer, and a self-installing CLI."
+kind: "plugin"
+---
+
 # dsh-plugin-graphify
 
-**Graphify als Plugin für den DeepSeek Harness.** Ein Sidebar-Eintrag, ein
-gezeichneter Code-Graph in drei Ebenen, Knotensuche, Hubs, Code-Viewer — und
-eine CLI, die sich beim ersten Start selbst installiert, wenn sie fehlt.
+English | [Deutsch](README.de.md)
 
-![Gesamtkarte des Graphen](docs/vorschau-gesamt.png)
+**Graphify as a plugin for the DeepSeek Harness.** A sidebar entry, a drawn code
+graph in three levels, node search, hubs, a code viewer — and a CLI that
+installs itself on first start when it is missing.
 
-*Vorschau mit Beispieldaten (hostfreie Prüfseite), nicht der Graph eines echten
-Repositories.*
+![The whole graph as a map](docs/vorschau-gesamt.png)
 
-## Was es zeigt
+*Preview with sample data (a host-free inspection page), not the graph of a real
+repository.*
 
-- **Drei Ebenen**, umschaltbar in der Werkzeugleiste:
-  - **Gesamt** — eine Stichprobe über die 16 größten Gruppen; je Gruppe wächst
-    die Auswahl vom wichtigsten Knoten aus, damit farbige Inseln entstehen
-  - **Gruppe** — alle Knoten einer Gruppe
-  - **Nachbarschaft** — die Umgebung eines Knotens, Tiefe 1–3
-- **Canvas-Graph** mit Kräfte-Layout: Mausrad zoomt um den Zeiger, Ziehen
-  verschiebt Knoten und Fläche, `⤢` paßt ein, „Anordnen" startet neu
-- **Suche** über Name, Art und Pfad; **größte Hubs** als Schnellauswahl
-- **Knotendaten**: Art, Pfad, Gruppe, Verbindungen; Nachbarn sind anklickbar
-- **Code-Viewer** mit Zeilennummern und Syntaxfarben; **Bearbeiten** mit
-  `Strg+S`, Rückfrage bei ungespeicherten Änderungen
-- **Graph erzeugen** startet `graphify extract` über die Host-Route
-- **Selbstinstallation**: fehlt die CLI, wird sie über `uv`, `pipx` oder `pip`
-  nachgezogen — siehe unten
+## What it shows
+
+- **Three levels**, switchable in the toolbar:
+  - **Overview** — a sample across the 16 largest groups; per group the
+    selection grows from its most important node, so coloured islands emerge
+  - **Group** — every node of one group
+  - **Neighbourhood** — the surroundings of one node, depth 1–3
+- **Canvas graph** with a force layout: the wheel zooms around the pointer,
+  dragging moves nodes and the canvas, `⤢` fits, “Arrange” restarts
+- **Search** across name, kind and path; **largest hubs** as quick picks
+- **Node data**: kind, path, group, links; neighbours are clickable
+- **Code viewer** with line numbers and syntax colours; **Edit** with `Ctrl+S`,
+  a prompt when changes are unsaved
+- **Build graph** runs `graphify extract` through the host route
+- **Self-install**: when the CLI is missing, it is pulled in via `uv`, `pipx` or
+  `pip` — see below
 
 ## Installation
 
-Voraussetzungen: ein DeepSeek Harness mit Web-Oberfläche und Bun. Für die
-Selbstinstallation der CLI zusätzlich `uv`, `pipx` oder Python (optional).
+Requirements: a DeepSeek Harness with the web interface and Bun. For the CLI
+self-install, additionally `uv`, `pipx` or Python (optional).
 
 ```powershell
 git clone https://github.com/LangLi7/dsh-plugin-graphify.git
 cd dsh-plugin-graphify
-bun run build      # optional — lib/ ist mitgeliefert
+bun run build      # optional — lib/ is shipped
 ```
 
-Dann im **Plugin-Manager** den Ordner `dsh-plugin-graphify` installieren
-(Eintrag `pmh-graphify`) und den Host einmal neu starten. Das Paket ist
-**Bündel und Plugin zugleich**: `dsh.bundle.patch` meldet die Host-Hälfte an,
-`dsh.client` die Browser-Hälfte. Es hat keine Workspace-Abhängigkeiten; die
-Host-Hälfte ist gebündelt, die Browser-Hälfte kommt als fertiges Modul.
+Then install the folder `dsh-plugin-graphify` in the **plugin manager** (entry
+`pmh-graphify`) and restart the host once. The package is **bundle and plugin in
+one**: `dsh.bundle.patch` registers the host half, `dsh.client` the browser half.
+It has no workspace dependencies; the host half is bundled, the browser half
+ships as a finished module.
 
-Nach dem Neustart steht **Graphify** in der Seitenleiste. Fehlt der Graph noch,
-führt der Knopf **Graph erzeugen** den ersten Lauf aus.
+After the restart, **Graphify** sits in the sidebar. If there is no graph yet,
+the **Build graph** button runs the first pass.
 
-## Graphify kommt mit
+## Graphify comes along
 
-Beim Start prüft das Plugin, ob die CLI erreichbar ist — unter `command`, in
-`PATH` und an den bekannten `uv`-Orten. Fehlt sie und steht `setup` auf `auto`
-(Vorgabe), installiert der Provider sie **einmal** im Hintergrund:
+On start, the plugin checks whether the CLI is reachable — under `command`, in
+`PATH`, and at the known `uv` locations. If it is missing and `setup` is `auto`
+(the default), the provider installs it **once** in the background:
 
-| Reihenfolge | erkannt an | Befehl |
+| Order | Detected by | Command |
 |---|---|---|
 | 1 | `uv` | `uv tool install graphifyy` |
 | 2 | `pipx` | `pipx install graphifyy` |
 | 3 | `python`/`python3`/`py` | `python -m pip install --user graphifyy` |
 
-Nach Erfolg wird der gefundene Pfad als `command` gespeichert. Fehlt jeder
-Paketmanager, passiert nichts Automatisches; das Panel zeigt die Hinweise für
-das jeweilige System.
+On success, the resolved path is stored as `command`. If no package manager is
+present, nothing automatic happens; the panel shows the instructions for the
+respective platform.
 
-![Einrichtung bei fehlender CLI](docs/vorschau-einrichtung.png)
+![Setup box when the CLI is missing](docs/vorschau-einrichtung.png)
 
-Im Panel steht bei fehlender CLI ein Kasten mit Weg, **Jetzt installieren**,
-Ausgabe und dem Schalter „Beim Start automatisch installieren". Abschalten:
+When the CLI is missing, the panel shows a box with the route, **Install now**,
+the output, and the “Install automatically at start” switch. To turn it off:
 
 ```json
 // $DSH_HOME/world/graphify.json
 { "command": "graphify", "outDir": "graphify-out", "root": ".", "setup": "never" }
 ```
 
-`setup` kennt `auto`, `ask` und `never`. Installiert wird nur das PyPI-Paket
-`graphifyy`; kein `sudo`, kein `curl | sh`, kein Installer-Download, Abbruch
-nach fünf Minuten.
+`setup` accepts `auto`, `ask` and `never`. Only the PyPI package `graphifyy` is
+installed; no `sudo`, no `curl | sh`, no installer download, and a timeout after
+five minutes.
 
-Der **MCP-Server** bleibt ein eigener Profil-Eintrag — er ist maschinenspezifisch
-und gehört nicht in ein Plugin:
+The **MCP server** remains a separate profile entry — it is machine-specific and
+does not belong in a plugin:
 
 ```yaml
 - insert:
@@ -92,72 +99,70 @@ und gehört nicht in ein Plugin:
         cwd: 'C:\Users\Chang\prometheus-harness'
 ```
 
-## Einstellungen
+## Settings
 
-Plugin-Einstellungen → Graphify:
+Plugin settings → Graphify:
 
-| Feld | Werte | Vorgabe | Wirkung |
+| Field | Values | Default | Effect |
 |---|---|---|---|
-| `surface` | `sidebar` · `plugins` · `both` · `none` | `sidebar` | wo das Plugin erscheint |
-| `order` | Zahl | `12` | Platz in der Leiste bzw. Liste |
-| `label` | Text | leer | eigene Beschriftung |
-| `view` | `split` · `graph` · `list` | `split` | welche Flächen aufgehen |
-| `level` | `gesamt` · `gruppe` · `nachbarschaft` | `gesamt` | Ebene beim Öffnen |
-| `depth` | `1`–`3` | `2` | Schritte der Nachbarschaft |
-| `limit` | `20`–`400` | `160` | Höchstzahl gezeichneter Knoten |
-| `labels` | `true`/`false` | `true` | Namen an den Knoten |
-| `colour` | `community` · `kind` | `community` | Farbe nach Gruppe oder Art |
-| `motion` | `true`/`false` | `true` | Layout beim Anfassen weiterrechnen |
-| `inspector` | `right` · `below` · `off` | `right` | wohin die Knotendaten kommen |
+| `surface` | `sidebar` · `plugins` · `both` · `none` | `sidebar` | where the plugin appears |
+| `order` | number | `12` | position in the sidebar or list |
+| `label` | text | empty | custom label |
+| `view` | `split` · `graph` · `list` | `split` | which panes open |
+| `level` | `gesamt` · `gruppe` · `nachbarschaft` | `gesamt` | level on open |
+| `depth` | `1`–`3` | `2` | neighbourhood steps |
+| `limit` | `20`–`400` | `160` | maximum nodes drawn |
+| `labels` | `true`/`false` | `true` | names on the nodes |
+| `colour` | `community` · `kind` | `community` | colour by group or by kind |
+| `motion` | `true`/`false` | `true` | keep computing the layout when touched |
+| `inspector` | `right` · `below` · `off` | `right` | where the node data goes |
 
-## Routen
+## Routes
 
-Alle Routen liegen unter `/api/world/graphify` und antworten **nur** auf
-Loopback-Anfragen.
+All routes live under `/api/world/graphify` and answer **only** loopback
+requests.
 
-| Weg | Methode | Antwort |
+| Path | Method | Response |
 |---|---|---|
-| `/status` | GET | CLI, Ordner, Knoten/Kanten |
-| `/graph` | GET | der Graph als Welt-Form |
-| `/run` | POST | Lauf `{ mode: "deep" \| "update" }` |
+| `/status` | GET | CLI, output dir, nodes/edges |
+| `/graph` | GET | the graph in world form |
+| `/run` | POST | run `{ mode: "deep" \| "update" }` |
 | `/config` | GET/POST | `{ command, outDir, root, setup }` |
-| `/setup` | GET | CLI, uv, pipx, Python, Weg, letzter Versuch |
-| `/setup` | POST | Installation `{ method: "uv" \| "pipx" \| "pip" }` |
-| `/file?path=…` | GET | `{ path, content, language, lines }` |
-| `/file` | POST | `{ path, content }` speichern |
+| `/setup` | GET | CLI, uv, pipx, Python, route, last attempt |
+| `/setup` | POST | install `{ method: "uv" \| "pipx" \| "pip" }` |
+| `/file?path=…` | GET | `{ path, content, language, lines }` of a text file |
+| `/file` | POST | save `{ path, content }` |
 
-## Aufbau
+## Layout
 
 ```
-src/host/     Provider: Routen, Konfiguration, Selbstinstallation, Mapping
-src/client/   Panel, Canvas, Kräfte-Layout, Texte (de/en)
-lib/          gebaute Hälften (index.js, client.js)
-build.mjs     baut beide Hälften
+src/host/     provider: routes, configuration, self-install, mapping
+src/client/   panel, canvas, force layout, texts (de/en)
+lib/          built halves (index.js, client.js)
+build.mjs     builds both halves
 ```
 
-Die Host-Hälfte ist gebündelt und importiert nur `@deepseek-ai/schemastery`.
-Die Browser-Hälfte lädt React von außen und bringt ihre Texte selbst mit; ist
-der Namensraum `graphify` schon von einem Sprachpaket belegt, bleiben dessen
-Texte zuständig.
+The host half is bundled and imports only `@deepseek-ai/schemastery`. The
+browser half loads React externally and brings its own texts; if the `graphify`
+namespace is already owned by a language pack, that pack's texts stay in charge.
 
-## Grenzen
+## Limits
 
-- **Gesamt** ist eine Stichprobe (16 Gruppen, Standard 160 Knoten), nicht der
-  ganze Graph: 36 000 Knoten sind kein Bild. Suche und Hubs führen durch den
-  Rest.
-- **Gruppe** zeigt höchstens `limit` Knoten der Gruppe, nach Grad.
-- Das Layout rechnet im Browser; bei 400 Knoten ist es noch flüssig, darüber
-  wird gekürzt.
-- Die Datei-Route liest den ganzen Graphen je Anfrage (lokal ~0.5 s bei 21 MB).
+- **Overview** is a sample (16 groups, default 160 nodes), not the whole graph:
+  36,000 nodes are not a picture. Search and hubs lead through the rest.
+- **Group** shows at most `limit` nodes of the group, by degree.
+- The layout runs in the browser; 400 nodes are still fluid, beyond that it is
+  truncated.
+- The file route reads the whole graph per request (~0.5 s locally at 21 MB).
 
-## Herkunft
+## Provenance
 
-Extrahiert aus [`LangLi7/prometheus-harness`](https://github.com/LangLi7/prometheus-harness),
-Stand **21.10.2026** (`packages/plugin/graphify` und
-`packages/world/graphify`). Dort läuft das Plugin im Verbund mit dem
-Sprachpaket; diese Fassung ist eigenständig gebaut.
+Extracted from [`LangLi7/prometheus-harness`](https://github.com/LangLi7/prometheus-harness),
+as of **2026-10-21** (`packages/plugin/graphify` and
+`packages/world/graphify`). There the plugin runs alongside the language pack;
+this copy is built standalone.
 
-## Lizenz
+## Licence
 
-Noch keine Lizenz festgelegt. Wer das Repository weiterverwenden will, sollte
-vorher eine wählen (etwa MIT); bis dahin gilt das Urheberrecht.
+No licence chosen yet. Anyone reusing the repository should pick one first (MIT,
+for example); until then, copyright applies.
