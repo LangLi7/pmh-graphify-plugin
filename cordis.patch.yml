@@ -1,0 +1,8 @@
+# Graphify als eigenes Bündel.
+#
+# Ein Eintrag: die Host-Routen des Providers und das Browser-Panel. Die
+# Browser-Hälfte meldet sich über `dsh.client` in package.json an.
+- insert:
+    - id: pmh-graphify
+      name: dsh-plugin-graphify
+      inject: [webServer]

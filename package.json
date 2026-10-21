@@ -1,0 +1,44 @@
+{
+  "name": "dsh-plugin-graphify",
+  "version": "0.1.0",
+  "private": false,
+  "type": "module",
+  "description": "Graphify als Plugin für den DeepSeek Harness: gezeichneter Code-Graph in drei Ebenen, Knotensuche, Code-Viewer und Selbstinstallation der CLI.",
+  "keywords": [
+    "deepseek-harness",
+    "dsh",
+    "dsh-plugin",
+    "graphify",
+    "code-graph"
+  ],
+  "main": "lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./client": "./lib/client.js",
+    "./package.json": "./package.json"
+  },
+  "dsh": {
+    "client": {
+      "platform": "web",
+      "inject": [
+        "@deepseek-ai/dsh-client-locale",
+        "@deepseek-ai/dsh-client-ui-layout",
+        "@deepseek-ai/dsh-client-ui-sidebar"
+      ]
+    },
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  },
+  "dependencies": {
+    "@deepseek-ai/schemastery": "~3.18.5-alpha.1"
+  },
+  "files": [
+    "lib",
+    "cordis.patch.yml",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "bun run build.mjs"
+  }
+}
