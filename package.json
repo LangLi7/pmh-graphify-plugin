@@ -1,9 +1,9 @@
 {
-  "name": "dsh-plugin-graphify",
+  "name": "pmh-graphify-plugin",
   "version": "0.1.0",
   "private": false,
   "type": "module",
-  "description": "Graphify als Plugin für den DeepSeek Harness: gezeichneter Code-Graph in drei Ebenen, Knotensuche, Code-Viewer und Selbstinstallation der CLI.",
+  "description": "Graphify als PMH-Plugin für den DeepSeek Harness: gezeichneter Code-Graph in drei Ebenen, Knotensuche, Code-Viewer, Selbstinstallation der CLI",
   "keywords": [
     "deepseek-harness",
     "dsh",

@@ -21,7 +21,7 @@
  * nur der Startpunkt, und zwar aus der Kennung ({@link startPunkt}), nicht aus
  * `Math.random`.
  *
- * @module dsh-plugin-graphify/sim
+ * @module pmh-graphify-plugin/sim
  */
 
 import { startPunkt, type ViewEdge, type ViewNode } from './view.ts'

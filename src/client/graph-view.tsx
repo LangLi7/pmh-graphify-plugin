@@ -9,7 +9,7 @@
  * im Panel, damit dieselben Schalter auch für die Liste gelten und die Fläche
  * nicht zwei Bedienungen hat.
  *
- * @module dsh-plugin-graphify/graph-view
+ * @module pmh-graphify-plugin/graph-view
  */
 
 import { useCallback, useEffect, useRef, useState } from 'react'

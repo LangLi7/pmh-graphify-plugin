@@ -1,5 +1,5 @@
 /**
- * **`dsh-plugin-graphify/world-graph` — der gemeinsame Vertrag der Welt.**
+ * **`pmh-graphify-plugin/world-graph` — der gemeinsame Vertrag der Welt.**
  *
  * Obsidian und Graphify liefern **verschiedene** Dinge: der eine Notizen mit
  * Wikilinks, der andere Code-Symbole mit aufgelösten Beziehungen. Die Welt soll
@@ -14,7 +14,7 @@
  * ob sie gelesen werden konnte. Eine Quelle, die fehlt, wird **genannt** und
  * nicht verschwiegen — sonst sähe ein leerer Graph wie ein leerer Vault aus.
  *
- * @module dsh-plugin-graphify/world-graph
+ * @module pmh-graphify-plugin/world-graph
  */
 
 /** Woher ein Knoten oder eine Kante kommt. */

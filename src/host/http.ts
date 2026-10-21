@@ -17,7 +17,7 @@
  *   würde.
  * * `nosniff` — die Antwort ist JSON und soll auch als JSON gelesen werden.
  *
- * @module dsh-plugin-graphify/host/http
+ * @module pmh-graphify-plugin/host/http
  */
 
 import type { IncomingMessage, ServerResponse } from 'node:http'

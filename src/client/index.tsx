@@ -13,7 +13,7 @@
  * Knoten sind einstellbar, und was fehlt, steht sichtbar daneben. Der ganze
  * Graph bleibt über Suche und Hubs erreichbar.
  *
- * @module dsh-plugin-graphify
+ * @module pmh-graphify-plugin
  */
 
 import { useEffect, useMemo, useState } from 'react'

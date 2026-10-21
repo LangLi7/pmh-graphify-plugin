@@ -17,7 +17,7 @@ import { join, resolve } from 'node:path'
 
 const DIR = resolve(import.meta.dir, '.')
 const LIB = join(DIR, 'lib')
-const KENNUNG = 'dsh-plugin-graphify'
+const KENNUNG = 'pmh-graphify-plugin'
 
 mkdirSync(LIB, { recursive: true })
 

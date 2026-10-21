@@ -1,13 +1,13 @@
 ---
-description: "Graphify plugin for the DeepSeek Harness: an interactive code graph in three levels, node search, a code viewer, and a self-installing CLI."
+description: "Graphify as a PMH plugin for the DeepSeek Harness: an interactive code graph in three levels, node search, a code viewer, and a self-installing CLI."
 kind: "plugin"
 ---
 
-# dsh-plugin-graphify
+# pmh-graphify-plugin
 
 English | [Deutsch](README.de.md)
 
-**Graphify as a plugin for the DeepSeek Harness.** A sidebar entry, a drawn code
+**Graphify as a PMH plugin for the DeepSeek Harness.** A sidebar entry, a drawn code
 graph in three levels, node search, hubs, a code viewer — and a CLI that
 installs itself on first start when it is missing.
 
@@ -39,12 +39,12 @@ Requirements: a DeepSeek Harness with the web interface and Bun. For the CLI
 self-install, additionally `uv`, `pipx` or Python (optional).
 
 ```powershell
-git clone https://github.com/LangLi7/dsh-plugin-graphify.git
-cd dsh-plugin-graphify
+git clone https://github.com/LangLi7/pmh-graphify-plugin.git
+cd pmh-graphify-plugin
 bun run build      # optional — lib/ is shipped
 ```
 
-Then install the folder `dsh-plugin-graphify` in the **plugin manager** (entry
+Then install the folder `pmh-graphify-plugin` in the **plugin manager** (entry
 `pmh-graphify`) and restart the host once. The package is **bundle and plugin in
 one**: `dsh.bundle.patch` registers the host half, `dsh.client` the browser half.
 It has no workspace dependencies; the host half is bundled, the browser half

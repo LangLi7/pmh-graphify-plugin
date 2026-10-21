@@ -15,7 +15,7 @@
  * Ausschnitt schon. Die Datei kennt deshalb weder `document` noch React und
  * bleibt auch im Browser-Bündel klein.
  *
- * @module dsh-plugin-graphify/view
+ * @module pmh-graphify-plugin/view
  */
 
 /** Ein Knoten, so wie die Host-Route ihn liefert. */

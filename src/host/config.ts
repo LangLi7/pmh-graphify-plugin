@@ -20,7 +20,7 @@
  * Betreiber genannt hat. Relative Pfade sind erlaubt (sie lösen gegen `root`
  * bzw. das Arbeitsverzeichnis auf), aber ohne `..`.
  *
- * @module dsh-plugin-graphify/host/config
+ * @module pmh-graphify-plugin/host/config
  */
 
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'

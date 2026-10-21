@@ -1,7 +1,7 @@
 /**
  * Die Texte des Graphify-Panels — **je Sprache eine Datei, keine zweite Liste im Code**.
  *
- * Dieselbe Begründung wie bei `dsh-plugin-graphify`: ein Text, den nur das Plugin kennt,
+ * Dieselbe Begründung wie bei `pmh-graphify-plugin`: ein Text, den nur das Plugin kennt,
  * taucht in keiner Sprachprüfung auf, und ein fehlender Schlüssel fällt erst auf, wenn ihn jemand
  * liest. Die Quelle ist `locale/de.json` (und `locale/en.json` für die zweite Sprache); diese
  * Datei ist nur noch der **Zugang** dazu.
@@ -9,7 +9,7 @@
  * Der Namensraum heißt `graphify`, wie `NS` in `index.tsx`; die `meta`-Angaben daneben sind für die
  * Plugin-Verwaltung und gehören nicht zum Wörterbuch.
  *
- * @module dsh-plugin-graphify/locales
+ * @module pmh-graphify-plugin/locales
  */
 
 import de from './locale/de.json' with { type: 'json' }

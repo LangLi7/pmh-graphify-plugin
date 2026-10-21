@@ -1,5 +1,5 @@
 /**
- * **`dsh-plugin-graphify/host` — Graphifys Graph am Webserver des Kerns.**
+ * **`pmh-graphify-plugin/host` — Graphifys Graph am Webserver des Kerns.**
  *
  * ## Der Auftrag
  *
@@ -36,7 +36,7 @@
  *   `error` in der Quelle. Ein Fehler, den man zeichnen kann, ist besser als
  *   eine abgebrochene Antwort.
  *
- * @module dsh-plugin-graphify/host
+ * @module pmh-graphify-plugin/host
  */
 
 import type { Context } from '@deepseek-ai/cordis'
@@ -65,7 +65,7 @@ import {
 } from './setup.ts'
 
 /** Stabiler Cordis-Plugin-Name — er steht in der Patch-Zeile und in jeder Meldung. */
-export const name = 'dsh-plugin-graphify'
+export const name = 'pmh-graphify-plugin'
 
 /** Der Dienst, ohne den es nichts zu registrieren gibt. */
 export const inject = ['webServer']

@@ -5,7 +5,7 @@
  * `Config`-Schema des Eintrags dazu — daraus speist sich die
  * Einstellungsseite im Plugin-Manager.
  *
- * @module dsh-plugin-graphify/host
+ * @module pmh-graphify-plugin/host
  */
 
 import z from '@deepseek-ai/schemastery'

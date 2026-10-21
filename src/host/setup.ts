@@ -32,7 +32,7 @@
  *   Hinweise in {@link SetupStatus.hinweise}, und der Mensch entscheidet.
  * * Kein Nachinstallieren des MCP-Servers; der ist ein eigener Profil-Eintrag.
  *
- * @module dsh-plugin-graphify/host/setup
+ * @module pmh-graphify-plugin/host/setup
  */
 
 import { existsSync } from 'node:fs'

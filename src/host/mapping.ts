@@ -9,7 +9,7 @@
  * ```
  *
  * Die Welt kennt aber nur **eine** Form — `WorldGraph` aus
- * `dsh-plugin-graphify/world-graph`. Diese Datei ist die Übersetzung, und sie
+ * `pmh-graphify-plugin/world-graph`. Diese Datei ist die Übersetzung, und sie
  * ist **rein**: sie bekommt den geparsten Wert und gibt einen gültigen Graphen
  * zurück. Kein Dateisystem, kein Netz.
  *
@@ -34,7 +34,7 @@
  * Alles andere ist ein `symbol`. Eine falsche Einordnung ist hier billiger als
  * eine fehlende: der Knoten bleibt sichtbar.
  *
- * @module dsh-plugin-graphify/host/mapping
+ * @module pmh-graphify-plugin/host/mapping
  */
 
 import {

@@ -4,5 +4,5 @@
 # Browser-Hälfte meldet sich über `dsh.client` in package.json an.
 - insert:
     - id: pmh-graphify
-      name: dsh-plugin-graphify
+      name: pmh-graphify-plugin
       inject: [webServer]
